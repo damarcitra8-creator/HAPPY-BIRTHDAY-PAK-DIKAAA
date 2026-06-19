@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Selamat Ulang Tahun Pak Dika</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ffffff,#dbeafe,#60a5fa);
+overflow-x:hidden;
+text-align:center;
+color:#0f172a;
+}
+
+#intro{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#001d4a;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+color:white;
+}
+
+.jeng{
+font-size:4rem;
+font-weight:bold;
+animation:zoom 1s infinite;
+text-shadow:0 0 20px white;
+}
+
+@keyframes zoom{
+50%{transform:scale(1.2);}
+}
+
+.hidden{
+display:none;
+}
+
+.main{
+padding:50px 20px;
+animation:fadeIn 2s;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.title{
+font-size:3rem;
+font-weight:700;
+background:linear-gradient(90deg,#2563eb,#ffffff,#2563eb);
+background-size:300%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:shine 5s linear infinite;
+}
+
+@keyframes shine{
+0%{background-position:0%;}
+100%{background-position:300%;}
+}
+
+.card{
+max-width:850px;
+margin:auto;
+margin-top:30px;
+background:rgba(255,255,255,0.8);
+backdrop-filter:blur(10px);
+padding:30px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+line-height:1.8;
+font-size:18px;
+}
+
+.video-box{
+margin-top:40px;
+}
+
+video{
+width:90%;
+max-width:800px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(37,99,235,0.4);
+}
+
+button{
+margin-top:30px;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+background:#2563eb;
+color:white;
+transition:0.4s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+.surprise{
+display:none;
+margin-top:30px;
+font-size:2rem;
+animation:fadeIn 2s;
+}
+
+.balloons{
+font-size:50px;
+animation:float 3s infinite;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-20px);
+}
+}
+</style>
+</head>
+
+<body>
+
+</button>
+<div id="intro">
+<div class="jeng">JENG...</div>
+</div>
+
+<!-- Ganti file ini dengan lagu Happy Birthday milikmu -->
+<audio id="dika.mp3"></audio>
+<source src="dika.mp3" type="audio/mpeg">
+</audio>
+
+<div class="main hidden" id="mainContent">
+
+<h1 class="title">
+🎉 Selamat Ulang Tahun Pak Dika 🎉
+</h1>
+
+<div class="card">
+
+<p>
+Hari ini adalah hari yang sangat spesial karena merupakan hari ulang tahun Bapak yang kami hormati.
+</p>
+
+<br>
+
+<p>
+Selamat ulang tahun Pak Dika. Semoga panjang umur, selalu diberikan kesehatan, kebahagiaan, rezeki yang melimpah, serta kesuksesan dalam setiap langkah kehidupan.
+</p>
+
+<p>
+Terima kasih atas ilmu, bimbingan, kesabaran, dan semangat yang telah Bapak berikan kepada kami selama ini.
+</p>
+
+<p>
+Semoga semua cita-cita dan harapan Bapak dapat tercapai, serta selalu diberikan kekuatan dan keberkahan dalam menjalani setiap aktivitas.
+</p>
+
+<p>
+Kami semua mendoakan agar tahun ini menjadi tahun yang lebih indah, penuh kebahagiaan, dan penuh kenangan baik bersama keluarga maupun orang-orang tercinta.
+</p>
+
+<p>
+✨ Sekali lagi, Selamat Ulang Tahun Pak Dika! ✨
+</p>
+
+</div>
+
+<div class="video-box">
+<h2>🎥 Kenangan Dari Kami</h2>
+
+<!-- GANTI video.mp4 dengan video kalian -->
+<video controls>
+<source src="video.mp4" type="video/mp4">
+</video>
+</div>
+
+<button onclick="showSurprise()">
+🎁 Buka Kejutan Ulang Tahun
+</button>
+
+<div class="surprise" id="surprise">
+<div class="balloons">
+🎈🎉🎂🎁🎊🎈
+</div>
+
+<p>
+Semoga Panjang Umur, Sehat Selalu, dan Bahagia Selamanya Pak Dika! 💙
+</p>
+</div>
+
+</div>
+
+<script>
+setTimeout(()=>{
+
+const music = document.getElementById("birthdayMusic");
+
+music.currentTime = 0;
+music.play().catch(()=>{});
+
+},2500);
+// SOUND JENG JENG JENG OTOMATIS
+function playJeng(){
+
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function beep(freq,time){
+const osc = audioCtx.createOscillator();
+const gain = audioCtx.createGain();
+
+osc.connect(gain);
+gain.connect(audioCtx.destination);
+
+osc.frequency.value=freq;
+osc.start();
+
+gain.gain.setValueAtTime(0.3,audioCtx.currentTime);
+
+gain.gain.exponentialRampToValueAtTime(
+0.0001,
+audioCtx.currentTime+time
+);
+
+osc.stop(audioCtx.currentTime+time);
+}
+
+setTimeout(()=>beep(200,0.5),0);
+setTimeout(()=>beep(250,0.5),700);
+setTimeout(()=>beep(120,1),1400);
+
+}
+
+// Intro
+setTimeout(()=>{
+
+playJeng();
+
+document.querySelector(".jeng").innerHTML=
+"JENG... JENG... JENG!!!";
+
+},500);
+
+setTimeout(()=>{
+
+document.getElementById("intro").style.display="none";
+document.getElementById("mainContent").classList.remove("hidden");
+
+// Lagu Happy Birthday milikmu
+document.getElementById("birthdayMusic").play();
+
+},4500);
+
+function showSurprise(){
+document.getElementById("surprise").style.display="block";
+}
+</script>
+
+</body>
+</html>
